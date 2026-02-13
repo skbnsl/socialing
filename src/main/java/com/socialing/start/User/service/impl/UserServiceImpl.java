@@ -2,6 +2,7 @@ package com.socialing.start.User.service.impl;
 
 import com.socialing.start.User.dtos.UserDTO;
 import com.socialing.start.User.entity.User;
+import com.socialing.start.User.enums.Role;
 import com.socialing.start.User.repositories.UserRepository;
 import com.socialing.start.User.service.UserService;
 import jakarta.transaction.Transactional;
@@ -25,7 +26,7 @@ public class UserServiceImpl implements UserService {
         userDTO.setPasswordHash(bCryptPasswordEncoder.encode(userDTO.getPasswordHash()));
 
         User user = modelMapper.map(userDTO, User.class);
-        user.setIsAdmin(false);
+        user.setRole(Role.USER);
 
         userRepository.save(user);
         return modelMapper.map(user, UserDTO.class);

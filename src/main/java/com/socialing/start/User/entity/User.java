@@ -1,6 +1,7 @@
 package com.socialing.start.User.entity;
 
 
+import com.socialing.start.User.enums.Role;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -30,7 +31,8 @@ public class User {
 
     private String passwordHash;
 
-    private Boolean isAdmin;
+    @Enumerated(EnumType.STRING)
+    private Role role;
 
     @CreationTimestamp
     private LocalDateTime createdAt;
