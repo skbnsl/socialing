@@ -1,6 +1,6 @@
-package com.socialing.start.repositories;
+package com.socialing.start.User.repositories;
 
-import com.socialing.start.entity.User;
+import com.socialing.start.User.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,4 +1,4 @@
-package com.socialing.start.entity;
+package com.socialing.start.User.entity;
 
 
 import jakarta.persistence.*;
@@ -29,6 +29,8 @@ public class User {
     private String email;
 
     private String passwordHash;
+
+    private Boolean isAdmin;
 
     @CreationTimestamp
     private LocalDateTime createdAt;
