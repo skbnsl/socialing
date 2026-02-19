@@ -1,21 +1,10 @@
 package com.socialing.start.User.dtos;
 
-import lombok.*;
-
-@AllArgsConstructor
-@NoArgsConstructor
-@Getter
-@Setter
-@Builder
-public class UserDTO {
+public class RegisterRequest {
 
     private String firstName;
     private String lastName;
-
     private String email;
-
     private String passwordHash;
-
-    private String token;
 
 }
