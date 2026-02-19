@@ -1,6 +1,7 @@
 package com.socialing.start.User.controller;
 
 import com.socialing.start.User.dtos.LoginRequest;
+import com.socialing.start.User.dtos.LoginResponse;
 import com.socialing.start.User.dtos.RegisterRequest;
 import com.socialing.start.User.dtos.UserDTO;
 import com.socialing.start.User.service.AuthService;
@@ -20,8 +21,8 @@ public class AuthController {
     private final AuthService authService;
 
     @PostMapping("/login")
-    public ResponseEntity<UserDTO> loginUser(@RequestBody LoginRequest loginRequest){
-        UserDTO user = authService.loginUser(loginRequest);
+    public ResponseEntity<LoginResponse> loginUser(@RequestBody LoginRequest loginRequest){
+        LoginResponse user = authService.loginUser(loginRequest);
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
