@@ -11,6 +11,8 @@ import org.modelmapper.ModelMapper;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 @RequiredArgsConstructor
 @Transactional
@@ -22,14 +24,21 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDTO addUser(UserDTO userDTO) {
+
+        Boolean exists = userRepository.existsByEmail(userDTO.getEmail());
+
+        if(exists==true){
+            throw new RuntimeException("user already Exists!");
+        }
+
         String email = userDTO.getEmail();
         userDTO.setPasswordHash(bCryptPasswordEncoder.encode(userDTO.getPasswordHash()));
 
-        User user = modelMapper.map(userDTO, User.class);
-        user.setRole(Role.USER);
+        User user1 = modelMapper.map(userDTO, User.class);
+        user1.setRole(Role.USER);
 
-        userRepository.save(user);
-        return modelMapper.map(user, UserDTO.class);
+        userRepository.save(user1);
+        return modelMapper.map(user1, UserDTO.class);
     }
 
     @Override
